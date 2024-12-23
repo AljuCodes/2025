@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .prediction {
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            background-color: #eaf6ff;
+            width: 50%;
+            display: none;
+        }
+        .spinner {
+            margin: 20px auto;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>How Your 2025 Will Be?</h1>
+    <p>Click the button below to get your prediction for 2025!</p>
+    <button id="predictButton" onclick="getPrediction()">Get Prediction</button>
+    <div class="spinner" id="spinner"></div>
+    <div class="prediction" id="prediction">
+        <p>Click the button to see your future!</p>
+    </div>
+
+    <script>
+        const predictions = [
+            "2025 will be your year of great success.",
+            "You will find new friendships that last a lifetime.",
+            "Expect a major financial breakthrough.",
+            "You will discover a hidden talent that surprises even you.",
+            "A dream vacation is on the horizon.",
+            "Your health will improve significantly.",
+            "You will reconnect with an old friend.",
+            "A big career opportunity is coming your way.",
+            "You will find clarity and purpose.",
+            "A new hobby will bring you immense joy.",
+            "Romantic surprises are in store for you.",
+            "You will make a positive impact in someone’s life.",
+            "Expect growth in your personal relationships.",
+            "Your creativity will flourish this year.",
+            "A new pet might enter your life.",
+            "You will achieve a goal you’ve been working toward.",
+            "A surprise gift will make your day.",
+            "Your family bonds will grow stronger.",
+            "You will learn something new that changes your perspective.",
+            "An unexpected journey awaits.",
+            "You will overcome a challenge with ease.",
+            "A financial windfall might come your way.",
+            "You will find peace and harmony.",
+            "Your leadership skills will be recognized.",
+            "A creative project will bring success.",
+            "Your social circle will expand with amazing people.",
+            "A long-held wish will come true.",
+            "You will find unexpected opportunities to give back.",
+            "Your work-life balance will improve.",
+            "You will invest time in self-care and reap the benefits.",
+            "You’ll experience a positive lifestyle change.",
+            "You will encounter a mentor who guides you.",
+            "Expect a year filled with laughter and joy.",
+            "Your resilience will inspire others.",
+            "You will find the courage to try something new.",
+            "Your hard work will pay off in a big way.",
+            "Someone will express deep gratitude toward you.",
+            "You will create memories that last a lifetime.",
+            "A financial habit will set you up for long-term stability.",
+            "You will develop a passion for something new.",
+            "A significant milestone will be achieved.",
+            "You will feel deeply appreciated by loved ones.",
+            "Your kindness will open new doors.",
+            "You will experience a moment of pure happiness.",
+            "Someone will share their secrets of success with you.",
+            "You will unlock a key to personal growth.",
+            "A close relationship will bring unexpected joy.",
+            "You will find time for activities you enjoy.",
+            "A special connection will grow deeper.",
+            "Your positive mindset will attract success.",
+            "A big celebration is in your future.",
+            "You will feel a sense of pride in your accomplishments.",
+            "An exciting partnership is on the cards.",
+            "You will learn to embrace change fearlessly.",
+            "A long-term dream will gain momentum.",
+            "You will find balance and inner peace.",
+            "A chance to showcase your talents will arise.",
+            "You will develop a deeper appreciation for life.",
+            "An inspiring book or movie will impact you deeply.",
+            "You will be rewarded for your efforts.",
+            "A new perspective will change your life for the better.",
+            "You will receive recognition for your contributions.",
+            "You will find strength you didn’t know you had.",
+            "Your generosity will bring you unexpected blessings.",
+            "An important lesson will lead to personal growth.",
+            "You will reconnect with nature in a meaningful way.",
+            "Your confidence will reach new heights.",
+            "You will create something truly meaningful.",
+            "A spontaneous adventure will be unforgettable.",
+            "Your career will take a step forward.",
+            "You will receive support from unexpected sources.",
+            "A special event will fill you with gratitude.",
+            "You will make progress on a passion project.",
+            "Your adaptability will be your strength.",
+            "Someone will admire your determination.",
+            "You will experience an act of kindness.",
+            "You will learn to cherish every moment.",
+            "A simple change will lead to big results.",
+            "You will make a decision that transforms your future.",
+            "An uplifting conversation will inspire you.",
+            "You will attract positive energy into your life.",
+            "Your persistence will lead to success.",
+            "You will discover a hidden gem in your city.",
+            "An exciting opportunity will present itself.",
+            "You will form a meaningful connection with someone new.",
+            "A heartfelt compliment will make your day.",
+            "You will achieve something you once thought impossible.",
+            "Your year will be filled with endless possibilities.",
+            "You will inspire someone with your story.",
+            "Your dreams will feel closer than ever.",
+            "A new chapter in your life will begin.",
+            "You will embrace a healthier lifestyle.",
+            "You will experience moments of pure serenity.",
+            "Your optimism will lead to great things.",
+            "An unexpected surprise will brighten your day."
+        ];
+
+        let hasPredicted = false;
+
+        function getPrediction() {
+            if (hasPredicted) return;
+
+            hasPredicted = true;
+
+            const spinner = document.getElementById("spinner");
+            const predictionDiv = document.getElementById("prediction");
+            const button = document.getElementById("predictButton");
+
+            spinner.style.display = "block";
+            button.disabled = true;
+
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * predictions.length);
+                const randomPrediction = predictions[randomIndex];
+                spinner.style.display = "none";
+                predictionDiv.style.display = "block";
+                predictionDiv.innerHTML = `<p>${randomPrediction}</p>`;
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
